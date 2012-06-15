@@ -37,6 +37,10 @@ when "centos","redhat","scientific","fedora"
 
   template "/etc/xinetd.d/tftp" do
     source "tftp.erb"
+    owner "root"
+    group "root"
+    mode 0644
+    notifies :restart, "service[xinetd]"
   end
 
 when "debian", "ubuntu"
