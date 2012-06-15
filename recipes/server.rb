@@ -18,26 +18,50 @@
 # limitations under the License.
 #
 
-package "tftpd-hpa"
+case node["platform"]
+when "centos","redhat","scientific","fedora"
+  package "tftp-server"
 
-service "tftpd-hpa" do
-  supports :restart => true, :status => true, :reload => true
-  action [ :enable ]
+  service "xinetd" do
+    supports :restart => true, :status => true, :reload => true
+    action [ :enable, :reload ]
+  end
+
+  directory node['tftp']['directory'] do
+    owner "nobody"
+    group "nobody"
+    mode 0755
+    recursive true
+    action :create
+  end
+
+  template "/etc/xinetd.d/tftp" do
+    source "tftp.erb"
+  end
+
+when "debian", "ubuntu"
+  package "tftpd-hpa"
+
+  service "tftpd-hpa" do
+    supports :restart => true, :status => true, :reload => true
+    action [ :enable ]
+  end
+
+  directory node['tftp']['directory'] do
+    owner "root"
+    group "root"
+    mode 0755
+    recursive true
+    action :create
+  end
+
+  template "/etc/default/tftpd-hpa" do
+    owner "root"
+    group "root"
+    mode 0644
+    source "tftpd-hpa.erb"
+    notifies :restart, "service[tftpd-hpa]"
+  end
+else
+  raise "Unsupported platform: #{node["platform"]}"
 end
-
-directory node['tftp']['directory'] do
-  owner "root"
-  group "root"
-  mode 0755
-  recursive true
-  action :create
-end
-
-template "/etc/default/tftpd-hpa" do
-  owner "root"
-  group "root"
-  mode 0644
-  source "tftpd-hpa.erb"
-  notifies :restart, "service[tftpd-hpa]"
-end
-
