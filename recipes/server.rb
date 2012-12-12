@@ -19,7 +19,7 @@
 #
 
 case node["platform"]
-when "centos","redhat","scientific","fedora"
+when "centos", "redhat", "scientific", "oracle", "amazon", "fedora"
   package "tftp-server"
 
   service "xinetd" do
