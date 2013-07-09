@@ -1,4 +1,3 @@
-## v1.2.0:
 
 * [COOK-3297] - Improved support for customized settings for RedHat based systems, the default options were also corrected
 
