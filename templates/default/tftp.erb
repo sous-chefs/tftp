@@ -5,7 +5,7 @@ service tftp
         wait            = yes
         user            = root
         server          = /usr/sbin/in.tftpd
-        server_args     = -c -s /tftpboot
+        server_args     = <%= node['tftp']['options'] %> <%= node['tftp']['directory'] %>
         disable         = no
         per_source      = 11
         cps             = 100 2
