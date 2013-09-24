@@ -24,7 +24,7 @@ when "centos", "redhat", "scientific", "oracle", "amazon", "fedora"
 
   service "xinetd" do
     supports :restart => true, :status => true, :reload => true
-    action [ :enable, :reload ]
+    action [ :enable, :start ]
   end
 
   directory node['tftp']['directory'] do
@@ -48,7 +48,7 @@ when "debian", "ubuntu"
 
   service "tftpd-hpa" do
     supports :restart => true, :status => true, :reload => true
-    action [ :enable ]
+    action [ :enable, :start ]
   end
 
   directory node['tftp']['directory'] do
