@@ -17,12 +17,16 @@ Usage
 =====
 Nodes using the `tftp::server` recipe will provide tftp access to whatever files are in their `['tftp']['directory']`.
 
+Testing
+-------
+Please refer to the [TESTING file](TESTING.md) to see instructions for testing this cookbook. It is currently tested on the following platforms: CentOS 5.9, CentOS 6.4, Debian 7.1, Ubuntu 10.04 and Ubuntu 12.04.
+
 License and Author
 ==================
 
 Author:: Matt Ray (<matt@opscode.com>)
 
-Copyright 2011-2012 Opscode, Inc.
+Copyright 2011-2013 Opscode, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
