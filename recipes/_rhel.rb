@@ -1,9 +1,9 @@
 #
 # Author:: Matt Ray <matt@opscode.com>
 # Cookbook Name:: tftp
-# Recipe:: default
+# Recipe:: rhel
 #
-# Copyright 2011, Opscode, Inc
+# Copyright 2011-2012, Opscode, Inc
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,12 +18,25 @@
 # limitations under the License.
 #
 
-begin
-  include_recipe "tftp::_#{node['platform_family']}"
-rescue Chef::Exceptions::RecipeNotFound
-  Chef::Log.warn <<-EOH
-A tftp recipe does not exist for '#{node['platform_family']}'. 
-This means the tftp cookbook does not have support for the
-#{node['platform_family']} family. 
-EOH
+package "tftp-server"
+
+service "xinetd" do
+  supports :restart => true, :status => true, :reload => true
+  action [ :enable, :start ]
+end
+
+directory node['tftp']['directory'] do
+  owner "nobody"
+  group "nobody"
+  mode 0755
+  recursive true
+  action :create
+end
+
+template "/etc/xinetd.d/tftp" do
+  source "tftp.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  notifies :restart, "service[xinetd]"
 end
