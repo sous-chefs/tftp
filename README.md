@@ -24,9 +24,9 @@ Please refer to the [TESTING file](TESTING.md) to see instructions for testing t
 License and Author
 ==================
 
-Author:: Matt Ray (<matt@opscode.com>)
+Author:: Matt Ray (<matt@chef.io>)
 
-Copyright 2011-2013 Opscode, Inc.
+Copyright 2011-2013 Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

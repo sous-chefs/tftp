@@ -1,6 +1,6 @@
 name             "tftp"
-maintainer       "Opscode, Inc."
-maintainer_email "matt@opscode.com"
+maintainer       "Chef Software, Inc."
+maintainer_email "matt@chef.io"
 license          "Apache 2.0"
 description      "Installs/Configures tftpd"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
