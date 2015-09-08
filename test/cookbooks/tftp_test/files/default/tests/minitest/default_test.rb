@@ -56,5 +56,4 @@ describe 'tftp_test::default' do
       file('/etc/xinetd.d/tftp').must_have(:mode, '644').with(:owner, 'root').and(:group, 'root')
     end
   end
-
 end

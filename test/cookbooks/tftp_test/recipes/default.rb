@@ -17,4 +17,4 @@
 # limitations under the License.
 #
 
-include_recipe "tftp::default"
+include_recipe 'tftp::default'

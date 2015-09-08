@@ -18,4 +18,4 @@
 # limitations under the License.
 #
 
-include_recipe "tftp::server"
+include_recipe 'tftp::server'
