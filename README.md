@@ -1,5 +1,8 @@
-Description
-===========
+tftp Cookbook
+=============
+[![Build Status](https://travis-ci.org/chef-cookbooks/tftp.svg?branch=master)](http://travis-ci.org/chef-cookbooks/tftp)
+[![Cookbook Version](https://img.shields.io/cookbook/v/tftp.svg)](https://supermarket.chef.io/cookbooks/tftp)
+
 Configures the Trivial File Transfer Protocol server `tftpd`. This cookbook may be used in conjunction with the `pxe_dust` to create PXE-bootable Ubuntu installs.
 
 Recipes
@@ -26,7 +29,7 @@ License and Author
 
 Author:: Matt Ray (<matt@chef.io>)
 
-Copyright 2011-2013 Chef Software, Inc.
+Copyright 2011-2015 Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
