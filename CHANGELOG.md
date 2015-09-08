@@ -1,3 +1,7 @@
+tftp Cookbook CHANGELOG
+=======================
+This file is used to list changes made in each version of the tftp cookbook.
+
 
 * [COOK-3297] - Improved support for customized settings for RedHat based systems, the default options were also corrected
 
