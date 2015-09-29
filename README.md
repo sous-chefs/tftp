@@ -5,32 +5,45 @@ tftp Cookbook
 
 Configures the Trivial File Transfer Protocol server `tftpd`. This cookbook may be used in conjunction with the `pxe_dust` to create PXE-bootable Ubuntu installs.
 
-Recipes
-=======
 
-default
+Requirements
+------------
+#### Platforms
+- Debian/Ubuntu
+- RHEL/CentOS/Scientific/Amazon/Oracle
+
+#### Chef
+- Chef 11+
+
+#### Cookbooks
+- none
+
+
+
+Recipes
 -------
+
+### default
 The default recipe passes through to the server recipe.
 
-server
-------
+###server
 The node will install and use the `tftpd` application to provide files via tftp. Typically those nodes will be requesting images via PXE and configured from their BIOS as clients, so there is not a client recipe yet.
 
 Usage
-=====
+-----
 Nodes using the `tftp::server` recipe will provide tftp access to whatever files are in their `['tftp']['directory']`.
 
-Testing
--------
+### Testing
 Please refer to the [TESTING file](TESTING.md) to see instructions for testing this cookbook. It is currently tested on the following platforms: CentOS 5.9, CentOS 6.4, Debian 7.1, Ubuntu 10.04 and Ubuntu 12.04.
 
-License and Author
-==================
+License & Authors
+-----------------
 
-Author:: Matt Ray (<matt@chef.io>)
+**Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
 
-Copyright 2011-2015 Chef Software, Inc.
+**Copyright:** 2008-2015, Chef Software, Inc.
 
+```
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -42,3 +55,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```
