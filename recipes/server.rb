@@ -3,7 +3,7 @@
 # Cookbook Name:: tftp
 # Recipe:: server
 #
-# Copyright 2011-2012, Chef Software, Inc
+# Copyright 2011-2015, Chef Software, Inc
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@
 # limitations under the License.
 #
 
-case node['platform']
-when 'centos', 'redhat', 'scientific', 'oracle', 'amazon', 'fedora'
+case node['platform_family']
+when 'rhel', 'fedora'
   package 'tftp-server'
 
   service 'xinetd' do
@@ -30,7 +30,7 @@ when 'centos', 'redhat', 'scientific', 'oracle', 'amazon', 'fedora'
   directory node['tftp']['directory'] do
     owner 'nobody'
     group 'nobody'
-    mode 0755
+    mode '0755'
     recursive true
     action :create
   end
@@ -39,11 +39,11 @@ when 'centos', 'redhat', 'scientific', 'oracle', 'amazon', 'fedora'
     source 'tftp.erb'
     owner 'root'
     group 'root'
-    mode 0644
+    mode '0644'
     notifies :restart, 'service[xinetd]'
   end
 
-when 'debian', 'ubuntu'
+when 'debian'
   package 'tftpd-hpa'
 
   service 'tftpd-hpa' do
@@ -54,7 +54,7 @@ when 'debian', 'ubuntu'
   directory node['tftp']['directory'] do
     owner 'root'
     group 'root'
-    mode 0755
+    mode '0755'
     recursive true
     action :create
   end
@@ -62,10 +62,10 @@ when 'debian', 'ubuntu'
   template '/etc/default/tftpd-hpa' do
     owner 'root'
     group 'root'
-    mode 0644
+    mode '0644'
     source 'tftpd-hpa.erb'
     notifies :restart, 'service[tftpd-hpa]'
   end
 else
-  Chef::Log.warn("#{cookbook_name}::#{recipe_name} recipe is not supported on #{node['platform']}")
+  Chef::Log.warn("#{cookbook_name}::#{recipe_name} recipe is not supported on #{node['platform_family']}")
 end
