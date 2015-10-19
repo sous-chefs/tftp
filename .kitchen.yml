@@ -17,6 +17,5 @@ platforms:
 suites:
 - name: default
   run_list:
-  - recipe[minitest-handler]
-  - recipe[tftp_test::default]
+  - recipe[tftp::default]
   attributes: {}
