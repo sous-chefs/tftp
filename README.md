@@ -1,5 +1,6 @@
 tftp Cookbook
 =============
+
 [![Build Status](https://travis-ci.org/chef-cookbooks/tftp.svg?branch=master)](http://travis-ci.org/chef-cookbooks/tftp)
 [![Cookbook Version](https://img.shields.io/cookbook/v/tftp.svg)](https://supermarket.chef.io/cookbooks/tftp)
 
@@ -38,12 +39,11 @@ Please refer to the [TESTING file](TESTING.md) to see instructions for testing t
 
 License & Authors
 -----------------
-
 **Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
 
 **Copyright:** 2008-2015, Chef Software, Inc.
 
-```
+```text
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
