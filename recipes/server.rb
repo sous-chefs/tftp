@@ -22,11 +22,6 @@ case node['platform_family']
 when 'rhel', 'fedora'
   package 'tftp-server'
 
-  service 'xinetd' do
-    supports restart: true, status: true, reload: true
-    action [:enable, :start]
-  end
-
   directory node['tftp']['directory'] do
     owner 'nobody'
     group 'nobody'
@@ -43,13 +38,13 @@ when 'rhel', 'fedora'
     notifies :restart, 'service[xinetd]'
   end
 
-when 'debian'
-  package 'tftpd-hpa'
-
-  service 'tftpd-hpa' do
+  service 'xinetd' do
     supports restart: true, status: true, reload: true
     action [:enable, :start]
   end
+
+when 'debian'
+  package 'tftpd-hpa'
 
   directory node['tftp']['directory'] do
     owner 'root'
@@ -65,6 +60,13 @@ when 'debian'
     mode '0644'
     source 'tftpd-hpa.erb'
     notifies :restart, 'service[tftpd-hpa]'
+  end
+
+  service 'tftpd-hpa' do
+    restart_command "service tftpd-hpa restart"
+    start_command "service tftpd-hpa start"
+    supports restart: true, status: true, reload: true
+    action [:enable, :start]
   end
 else
   Chef::Log.warn("#{cookbook_name}::#{recipe_name} recipe is not supported on #{node['platform_family']}")
