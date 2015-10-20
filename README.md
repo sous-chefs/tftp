@@ -34,9 +34,6 @@ Usage
 -----
 Nodes using the `tftp::server` recipe will provide tftp access to whatever files are in their `['tftp']['directory']`.
 
-### Testing
-Please refer to the [TESTING file](TESTING.md) to see instructions for testing this cookbook. It is currently tested on the following platforms: CentOS 5.9, CentOS 6.4, Debian 7.1, Ubuntu 10.04 and Ubuntu 12.04.
-
 License & Authors
 -----------------
 **Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
