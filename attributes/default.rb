@@ -23,3 +23,12 @@ default['tftp']['directory'] = '/var/lib/tftpboot'
 default['tftp']['address'] = '0.0.0.0:69'
 default['tftp']['tftp_options'] = '--secure'
 default['tftp']['options'] = '-s'
+
+case node['platform_family']
+when 'rhel', 'fedora'
+  default['tftp']['owner'] = 'nobody'
+  default['tftp']['group'] = 'nobody'
+when 'debian'
+  default['tftp']['owner'] = 'root'
+  default['tftp']['group'] = 'root'
+end

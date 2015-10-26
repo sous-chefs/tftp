@@ -23,8 +23,8 @@ when 'rhel', 'fedora'
   package 'tftp-server'
 
   directory node['tftp']['directory'] do
-    owner 'nobody'
-    group 'nobody'
+    owner node['tftp']['owner']
+    group node['tftp']['group']
     mode '0755'
     recursive true
     action :create
@@ -47,8 +47,8 @@ when 'debian'
   package 'tftpd-hpa'
 
   directory node['tftp']['directory'] do
-    owner 'root'
-    group 'root'
+    owner node['tftp']['owner']
+    group node['tftp']['group']
     mode '0755'
     recursive true
     action :create
