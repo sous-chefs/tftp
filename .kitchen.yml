@@ -25,7 +25,7 @@ platforms:
 
 suites:
   - name: default
-    run_list: activemq::default
+    run_list: tftp::default
     attributes:
       activemq:
         use_default_config: true
