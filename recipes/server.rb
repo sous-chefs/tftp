@@ -21,6 +21,7 @@
 case node['platform_family']
 when 'rhel', 'fedora'
   package 'tftp-server'
+  package 'xinetd'
 
   directory node['tftp']['directory'] do
     owner 'nobody'
