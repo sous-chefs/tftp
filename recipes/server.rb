@@ -26,7 +26,7 @@ when 'rhel', 'fedora'
   directory node['tftp']['directory'] do
     owner 'nobody'
     group 'nobody'
-    mode '0755'
+    mode node['tftp']['permissions']
     recursive true
     action :create
   end
@@ -50,7 +50,7 @@ when 'debian'
   directory node['tftp']['directory'] do
     owner 'root'
     group 'root'
-    mode '0755'
+    mode node['tftp']['permissions']
     recursive true
     action :create
   end
