@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the tftp cookbook.
 
+## v1.5.0 (2016-05-18):
+
+- Add a new attribute for controlling the permissions on the tftp directory
+
 ## v1.4.0 (2016-04-28):
 
 - Added support for RHEL 7 by installing xinetd on all RHEL systems to ensure it's present
