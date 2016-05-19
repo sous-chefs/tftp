@@ -36,12 +36,12 @@ when 'rhel', 'fedora'
     server_args: "-s #{node['tftp']['directory']}",
     per_source: '11',
     cps: '100 2',
-    flags: 'IPV4',
+    flags: 'IPV4'
   }
 when 'debian'
   default['tftp']['owner'] = 'root'
   default['tftp']['group'] = 'nogroup'
-  default['tftp']['pkgs']   = %w(tftpd-hpa)
+  default['tftp']['pkgs'] = %w(tftpd-hpa)
   default['tftp']['config_file'] = '/etc/default/tftpd-hpa'
   default['tftp']['conf'] = {
     TFTP_USERNAME: node['tftp']['username'],
@@ -49,6 +49,6 @@ when 'debian'
     TFTP_ADDRESS: '0.0.0.0:69',
     TFTP_OPTIONS: '--secure',
     RUN_DAEMON: 'yes',
-    OPTIONS: '-s',
+    OPTIONS: '-s'
   }
 end

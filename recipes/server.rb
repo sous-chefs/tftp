@@ -54,7 +54,7 @@ when 'debian'
     mode '0644'
     variables(
       config_file: node['tftp']['config_file'],
-      conf: node['tftp']['conf'],
+      conf: node['tftp']['conf']
     )
     notifies :restart, 'service[tftpd-hpa]'
   end
