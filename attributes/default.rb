@@ -24,3 +24,12 @@ default['tftp']['permissions'] = '0755'
 default['tftp']['address'] = '0.0.0.0:69'
 default['tftp']['tftp_options'] = '--secure'
 default['tftp']['options'] = '-s'
+
+case node['platform_family']
+when 'rhel', 'fedora'
+  default['tftp']['owner'] = 'root'
+  default['tftp']['group'] = 'root'
+when 'debian'
+  default['tftp']['owner'] = 'root'
+  default['tftp']['group'] = 'nogroup'
+end

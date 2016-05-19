@@ -24,8 +24,8 @@ when 'rhel', 'fedora'
   package 'xinetd'
 
   directory node['tftp']['directory'] do
-    owner 'nobody'
-    group 'nobody'
+    owner node['tftp']['owner']
+    group node['tftp']['group']
     mode node['tftp']['permissions']
     recursive true
     action :create
@@ -48,8 +48,8 @@ when 'debian'
   package 'tftpd-hpa'
 
   directory node['tftp']['directory'] do
-    owner 'root'
-    group 'root'
+    owner node['tftp']['owner']
+    group node['tftp']['group']
     mode node['tftp']['permissions']
     recursive true
     action :create
