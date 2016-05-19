@@ -12,3 +12,6 @@ end
 
 source_url 'https://github.com/chef-cookbooks/tftp' if respond_to?(:source_url)
 issues_url 'https://github.com/chef-cookbooks/tftp/issues' if respond_to?(:issues_url)
+%w(xinetd).each do |ck|
+  depends ck
+end
