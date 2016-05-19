@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the tftp cookbook.
 
+## v1.6.0 (2016-05-19):
+
+- Add a new attribute for controlling the user / group of tftp directories. Also properly set these to the defaults for RHEL/Fedora/Debian based systems
+
 ## v1.5.0 (2016-05-18):
 
 - Add a new attribute for controlling the permissions on the tftp directory
