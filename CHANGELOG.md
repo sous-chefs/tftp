@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the tftp cookbook.
 
+## v2.0.0 (2016-05-20):
+
+- Completely refactored to use the xinetd cookbook and to allow all config variables to be passed in via a config hash. See the attributes file for the new defaults and usage.
+
 ## v1.6.0 (2016-05-19):
 
 - Add a new attribute for controlling the user / group of tftp directories. Also properly set these to the defaults for RHEL/Fedora/Debian based systems
