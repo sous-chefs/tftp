@@ -17,7 +17,7 @@ Requirements
 - Chef 11+
 
 #### Cookbooks
-- none
+- xinetd
 
 
 

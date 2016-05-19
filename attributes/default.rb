@@ -21,15 +21,34 @@
 default['tftp']['username'] = 'tftp'
 default['tftp']['directory'] = '/var/lib/tftpboot'
 default['tftp']['permissions'] = '0755'
-default['tftp']['address'] = '0.0.0.0:69'
-default['tftp']['tftp_options'] = '--secure'
-default['tftp']['options'] = '-s'
 
 case node['platform_family']
 when 'rhel', 'fedora'
-  default['tftp']['owner'] = 'root'
-  default['tftp']['group'] = 'root'
+  default['tftp']['owner']  = 'root'
+  default['tftp']['group']  = 'root'
+  default['tftp']['pkgs']   = %w(tftp-server)
+  default['tftp']['conf'] = {
+    socket_type: 'dgram',
+    protocol: 'udp',
+    wait: 'yes',
+    user: 'root',
+    server: '/usr/sbin/in.tftpd',
+    server_args: "-s #{node['tftp']['directory']}",
+    per_source: '11',
+    cps: '100 2',
+    flags: 'IPV4',
+  }
 when 'debian'
   default['tftp']['owner'] = 'root'
   default['tftp']['group'] = 'nogroup'
+  default['tftp']['pkgs']   = %w(tftpd-hpa)
+  default['tftp']['config_file'] = '/etc/default/tftpd-hpa'
+  default['tftp']['conf'] = {
+    TFTP_USERNAME: node['tftp']['username'],
+    TFTP_DIRECTORY: node['tftp']['directory'],
+    TFTP_ADDRESS: '0.0.0.0:69',
+    TFTP_OPTIONS: '--secure',
+    RUN_DAEMON: 'yes',
+    OPTIONS: '-s',
+  }
 end

@@ -18,48 +18,44 @@
 # limitations under the License.
 #
 
+unless %w(rhel fedora debian).include?(node['platform_family'])
+  Chef::Log.warn("#{cookbook_name}::#{recipe_name} recipe is not supported on #{node['platform_family']}")
+  return
+end
+
+node['tftp']['pkgs'].each do |pkg|
+  package pkg
+end
+
+directory node['tftp']['directory'] do
+  owner node['tftp']['owner']
+  group node['tftp']['group']
+  mode node['tftp']['permissions']
+  recursive true
+  action :create
+end
+
 case node['platform_family']
 when 'rhel', 'fedora'
-  package 'tftp-server'
-  package 'xinetd'
-
-  directory node['tftp']['directory'] do
-    owner node['tftp']['owner']
-    group node['tftp']['group']
-    mode node['tftp']['permissions']
-    recursive true
-    action :create
+  include_recipe 'xinetd'
+  # Using the xinetd provider to define the tftp service
+  xinetd_service 'tftp' do
+    # The main idea is to use the Mash from the node to create dynamically the
+    # xinetd service
+    node['tftp']['conf'].each do |k, v|
+      send(k.to_sym, v)
+    end
   end
-
-  template '/etc/xinetd.d/tftp' do
+when 'debian'
+  template node['tftp']['config_file'] do
     source 'tftp.erb'
     owner 'root'
     group 'root'
     mode '0644'
-    notifies :restart, 'service[xinetd]'
-  end
-
-  service 'xinetd' do
-    supports restart: true, status: true, reload: true
-    action [:enable, :start]
-  end
-
-when 'debian'
-  package 'tftpd-hpa'
-
-  directory node['tftp']['directory'] do
-    owner node['tftp']['owner']
-    group node['tftp']['group']
-    mode node['tftp']['permissions']
-    recursive true
-    action :create
-  end
-
-  template '/etc/default/tftpd-hpa' do
-    owner 'root'
-    group 'root'
-    mode '0644'
-    source 'tftpd-hpa.erb'
+    variables(
+      config_file: node['tftp']['config_file'],
+      conf: node['tftp']['conf'],
+    )
     notifies :restart, 'service[tftpd-hpa]'
   end
 
@@ -69,6 +65,4 @@ when 'debian'
     supports restart: true, status: true, reload: true
     action [:enable, :start]
   end
-else
-  Chef::Log.warn("#{cookbook_name}::#{recipe_name} recipe is not supported on #{node['platform_family']}")
 end
