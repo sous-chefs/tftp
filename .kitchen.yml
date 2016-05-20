@@ -28,8 +28,3 @@ platforms:
 suites:
   - name: default
     run_list: tftp::default
-    attributes:
-      activemq:
-        use_default_config: true
-      java:
-        jdk_version: 8
