@@ -19,7 +19,7 @@ platforms:
     pid_one_command: /sbin/init
     intermediate_instructions:
       - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install lsb-release -y
+      - RUN /usr/bin/apt-get install lsb-release procps -y
 
 - name: debian-8
   driver:
@@ -34,12 +34,13 @@ platforms:
     image: centos:5
     platform: rhel
     pid_one_command: /sbin/init
-    provision_command:
-      - /usr/bin/yum install -y initscripts wget
+    intermediate_instructions:
+      - RUN yum install -y which initscripts
 
 - name: centos-6
   driver:
     image: centos:6
+    platform: rhel
     pid_one_command: /sbin/init
     intermediate_instructions:
       - RUN yum -y install which initscripts
@@ -47,16 +48,17 @@ platforms:
 - name: centos-7
   driver:
     image: centos:7
+    platform: rhel
     pid_one_command: /usr/lib/systemd/systemd
     intermediate_instructions:
-      - RUN yum -y install lsof
+      - RUN yum -y install lsof which systemd-sysv initscripts
 
-- name: fedora-23
+- name: fedora-latest
   driver:
-    image: fedora:23
+    image: fedora:latest
     pid_one_command: /usr/lib/systemd/systemd
     intermediate_instructions:
-      - RUN dnf -y install yum
+      - RUN dnf -y install yum which systemd-sysv initscripts
 
 - name: ubuntu-12.04
   driver:
@@ -84,7 +86,14 @@ platforms:
     image: opensuse:13.2
     pid_one_command: /bin/systemd
     intermediate_instructions:
-      - RUN zypper refresh
+      - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which net-tools
+
+- name: opensuse-42.1
+  driver:
+    image: opensuse:42.1
+    pid_one_command: /bin/systemd
+    intermediate_instructions:
+      - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which hostname
 
 suites:
   - name: default
