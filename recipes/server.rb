@@ -60,9 +60,7 @@ when 'debian'
   end
 
   service 'tftpd-hpa' do
-    restart_command 'service tftpd-hpa restart'
-    start_command 'service tftpd-hpa start'
-    supports restart: true, status: true, reload: true
+    supports restart: true, status: true
     action [:enable, :start]
   end
 end
