@@ -23,9 +23,7 @@ unless %w(rhel fedora debian).include?(node['platform_family'])
   return
 end
 
-node['tftp']['pkgs'].each do |pkg|
-  package pkg
-end
+package node['tftp']['pkgs']
 
 directory node['tftp']['directory'] do
   owner node['tftp']['owner']
