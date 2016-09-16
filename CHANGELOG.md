@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of the tftp cookbook.
 
+## 3.0.0 (2016-09-16)
+- Switch to kitchen-dokken for testing in Travis
+- Replace serverspec tests with inspec
+- Add chef_version metadata
+- Clean up service commands
+- Require Chef 12.1A
+- Use multipackage installs to speed up chef runs
+
 ## v2.0.0 (2016-05-20):
 
 - Completely refactored to use the xinetd cookbook and to allow all config variables to be passed in via a config hash. See the attributes file for the new defaults and usage.
