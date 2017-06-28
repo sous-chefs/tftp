@@ -1,7 +1,6 @@
 # tftp Cookbook
 
-[![Build Status](https://travis-ci.org/chef-cookbooks/tftp.svg?branch=master)](http://travis-ci.org/chef-cookbooks/tftp)
-[![Cookbook Version](https://img.shields.io/cookbook/v/tftp.svg)](https://supermarket.chef.io/cookbooks/tftp)
+[![Build Status](https://travis-ci.org/chef-cookbooks/tftp.svg?branch=master)](http://travis-ci.org/chef-cookbooks/tftp) [![Cookbook Version](https://img.shields.io/cookbook/v/tftp.svg)](https://supermarket.chef.io/cookbooks/tftp)
 
 Configures the Trivial File Transfer Protocol server `tftpd`. This cookbook may be used in conjunction with the `pxe_dust` to create PXE-bootable Ubuntu installs.
 
@@ -20,22 +19,23 @@ Configures the Trivial File Transfer Protocol server `tftpd`. This cookbook may 
 
 - xinetd
 
-
-
 ## Recipes
 
 ### default
+
 The default recipe passes through to the server recipe.
 
-###server
+### server
+
 The node will install and use the `tftpd` application to provide files via tftp. Typically those nodes will be requesting images via PXE and configured from their BIOS as clients, so there is not a client recipe yet.
 
 ## Usage
+
 Nodes using the `tftp::server` recipe will provide tftp access to whatever files are in their `['tftp']['directory']`.
 
 ## License & Authors
 
-**Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
+**Author:** Cookbook Engineering Team ([cookbooks@chef.io](mailto:cookbooks@chef.io))
 
 **Copyright:** 2008-2016, Chef Software, Inc.
 

@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-unless %w(rhel fedora debian).include?(node['platform_family'])
+unless %w(rhel fedora debian amazon).include?(node['platform_family'])
   Chef::Log.warn("#{cookbook_name}::#{recipe_name} recipe is not supported on #{node['platform_family']}")
   return
 end
@@ -34,7 +34,7 @@ directory node['tftp']['directory'] do
 end
 
 case node['platform_family']
-when 'rhel', 'fedora'
+when 'rhel', 'fedora', 'amazon'
   include_recipe 'xinetd'
   # Using the xinetd provider to define the tftp service
   xinetd_service 'tftp' do

@@ -23,7 +23,7 @@ default['tftp']['directory'] = '/var/lib/tftpboot'
 default['tftp']['permissions'] = '0755'
 
 case node['platform_family']
-when 'rhel', 'fedora'
+when 'rhel', 'fedora', 'amazon'
   default['tftp']['owner']  = 'root'
   default['tftp']['group']  = 'root'
   default['tftp']['pkgs']   = %w(tftp-server)
