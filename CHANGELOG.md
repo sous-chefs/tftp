@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of the tftp cookbook.
 
+## 3.0.1 (2017-06-28)
+
+- Test with Local Delivery instead of Rake
+- Update apache2 license string to be a SPDX compliant string
+- Move the template out of the default dir since Chef 12 does not require this
+- Support Amazon Linux on Chef 13 and add amazon linux to the metadata
+- Avoid deprecation warning in the Chefspecs
+
 ## 3.0.0 (2016-09-16)
 - Switch to kitchen-dokken for testing in Travis
 - Replace serverspec tests with inspec
