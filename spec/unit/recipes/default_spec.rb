@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe 'default recipe' do
   let(:chef_run) do
-    ChefSpec::ServerRunner.new do |node|
-      node.automatic[:lsb][:codename] = 'trusty'
-    end.converge('tftp::default')
+    ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04').converge('tftp::default')
   end
 
   it 'converges successfully' do
