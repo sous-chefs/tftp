@@ -30,7 +30,7 @@ platforms:
       - RUN /usr/bin/apt-get update
       - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools -y
 
-- name: debian-8
+- name: debian-9
   driver:
     image: debian:8
     pid_one_command: /bin/systemd
