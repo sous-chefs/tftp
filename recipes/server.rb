@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-unless %w(rhel fedora debian amazon).include?(node['platform_family'])
+unless platform_family?('rhel', 'fedora', 'debian', 'amazon')
   Chef::Log.warn("#{cookbook_name}::#{recipe_name} recipe is not supported on #{node['platform_family']}")
   return
 end
