@@ -21,6 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MDL Fixes
 - Yamllint fixes
 
+### Removed
+
+- Remove EL6 testing
+
 ## 3.0.1 (2017-06-28)
 
 - Test with Local Delivery instead of Rake
