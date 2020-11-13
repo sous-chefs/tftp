@@ -27,21 +27,12 @@ when 'rhel', 'fedora', 'amazon'
   default['tftp']['owner']  = 'root'
   default['tftp']['group']  = 'root'
   default['tftp']['pkgs']   = %w(tftp-server)
-  default['tftp']['conf'] = {
-    socket_type: 'dgram',
-    protocol: 'udp',
-    wait: 'yes',
-    user: 'root',
-    server: '/usr/sbin/in.tftpd',
-    server_args: "-s #{node['tftp']['directory']}",
-    per_source: '11',
-    cps: '100 2',
-    flags: 'IPV4',
-  }
+  default['tftp']['service_name'] = 'tftp'
 when 'debian'
   default['tftp']['owner'] = 'root'
   default['tftp']['group'] = 'nogroup'
   default['tftp']['pkgs'] = %w(tftpd-hpa)
+  default['tftp']['service_name'] = 'tftpd-hpa'
   default['tftp']['config_file'] = '/etc/default/tftpd-hpa'
   default['tftp']['conf'] = {
     TFTP_USERNAME: node['tftp']['username'],

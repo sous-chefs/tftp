@@ -2,6 +2,35 @@
 
 This file is used to list changes made in each version of the tftp cookbook.
 
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## Unreleased
+
+### Changed
+
+- Sous Chefs Adoption
+- Update Changelog to Sous Chefs
+- Update to use Sous Chefs GH workflow
+- Update README to sous-chefs
+- Update metadata.rb to Sous Chefs
+- Update test-kitchen to Sous Chefs
+- Switch CentOS/Fedora to use systemd unit instead of xinetd
+
+### Fixed
+
+- MDL Fixes
+- Yamllint fixes
+
+### Added
+
+- Add Ubuntu 20.04 testing
+- Add CentOS 8 testing
+
+### Removed
+
+- Remove EL6 testing
+
 ## 3.0.1 (2017-06-28)
 
 - Test with Local Delivery instead of Rake
@@ -11,6 +40,7 @@ This file is used to list changes made in each version of the tftp cookbook.
 - Avoid deprecation warning in the Chefspecs
 
 ## 3.0.0 (2016-09-16)
+
 - Switch to kitchen-dokken for testing in Travis
 - Replace serverspec tests with inspec
 - Add chef_version metadata
@@ -18,23 +48,23 @@ This file is used to list changes made in each version of the tftp cookbook.
 - Require Chef 12.1A
 - Use multipackage installs to speed up chef runs
 
-## v2.0.0 (2016-05-20):
+## v2.0.0 (2016-05-20)
 
 - Completely refactored to use the xinetd cookbook and to allow all config variables to be passed in via a config hash. See the attributes file for the new defaults and usage.
 
-## v1.6.0 (2016-05-19):
+## v1.6.0 (2016-05-19)
 
 - Add a new attribute for controlling the user / group of tftp directories. Also properly set these to the defaults for RHEL/Fedora/Debian based systems
 
-## v1.5.0 (2016-05-18):
+## v1.5.0 (2016-05-18)
 
 - Add a new attribute for controlling the permissions on the tftp directory
 
-## v1.4.0 (2016-04-28):
+## v1.4.0 (2016-04-28)
 
 - Added support for RHEL 7 by installing xinetd on all RHEL systems to ensure it's present
 
-## v1.3.0:
+## v1.3.0
 
 - Switch to platform family to support additional RHEL and Debian derivatives
 - Setup / Start the services after creating the dirs and templating the configs to prevent starting the service is a 1/2 working state and/or failures that would halt the chef run
@@ -59,15 +89,15 @@ This file is used to list changes made in each version of the tftp cookbook.
 - Resolved all Rubocop warnings
 - Add License file
 
-## v1.2.0:
+## v1.2.0
 
 - [COOK-3297] - Improved support for customized settings for RedHat based systems, the default options were also corrected
 - Resolved xinetd restarting on every chef run
 
-## v1.1.0:
+## v1.1.0
 
 - [COOK-1849] - Add RHEL support
 
-## v1.0.0:
+## v1.0.0
 
 - [COOK-1536] - tftp service doesn't restart if down
