@@ -35,14 +35,15 @@ end
 
 case node['platform_family']
 when 'rhel', 'fedora', 'amazon'
-  include_recipe 'xinetd'
-  # Using the xinetd provider to define the tftp service
-  xinetd_service 'tftp' do
-    # The main idea is to use the Mash from the node to create dynamically the
-    # xinetd service
-    node['tftp']['conf'].each do |k, v|
-      send(k.to_sym, v)
-    end
+  directory '/etc/systemd/system/tftp.service.d'
+
+  template '/etc/systemd/system/tftp.service.d/10-override.conf' do
+    notifies :run, 'execute[systemctl daemon-reload]', :immediately
+    notifies :restart, 'service[tftpd]'
+  end
+
+  execute 'systemctl daemon-reload' do
+    action :nothing
   end
 when 'debian'
   template node['tftp']['config_file'] do
@@ -54,11 +55,11 @@ when 'debian'
       config_file: node['tftp']['config_file'],
       conf: node['tftp']['conf']
     )
-    notifies :restart, 'service[tftpd-hpa]'
+    notifies :restart, 'service[tftpd]'
   end
+end
 
-  service 'tftpd-hpa' do
-    supports restart: true, status: true
-    action [:enable, :start]
-  end
+service 'tftpd' do
+  service_name node['tftp']['service_name']
+  action [:enable, :start]
 end

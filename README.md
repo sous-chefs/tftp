@@ -23,10 +23,6 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 
 - Chef 12.1+
 
-### Cookbooks
-
-- xinetd
-
 ## Recipes
 
 ### default

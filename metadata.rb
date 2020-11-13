@@ -16,6 +16,3 @@ supports 'oracle'
 supports 'redhat'
 supports 'scientific'
 supports 'ubuntu'
-
-depends 'xinetd'
-
