@@ -21,6 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MDL Fixes
 - Yamllint fixes
 
+### Added
+
+- Add Ubuntu 20.04 testing
+
 ### Removed
 
 - Remove EL6 testing
