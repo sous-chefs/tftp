@@ -7,17 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 4.0.4 - *2023-02-14*
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 4.0.3 - *2023-02-14*
+
+- Standardise files with files in sous-chefs/repo-management
 
 ## 4.0.2 - *2021-08-31*
 
 - Standardise files with files in sous-chefs/repo-management
 
 ## 4.0.0 (2020-11-13)
-
-### Changed
 
 - Sous Chefs Adoption
 - Update Changelog to Sous Chefs
@@ -26,18 +30,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update metadata.rb to Sous Chefs
 - Update test-kitchen to Sous Chefs
 - Switch CentOS/Fedora to use systemd unit instead of xinetd
-
-### Fixed
+@2.0.1
 
 - MDL Fixes
 - Yamllint fixes
 
-### Added
-
 - Add Ubuntu 20.04 testing
 - Add CentOS 8 testing
-
-### Removed
 
 - Remove EL6 testing
 

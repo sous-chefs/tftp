@@ -6,7 +6,7 @@ description       'Installs/Configures tftpd'
 version           '4.0.4'
 source_url        'https://github.com/sous-chefs/tftp'
 issues_url        'https://github.com/sous-chefs/tftp/issues'
-chef_version      '>= 12.15'
+chef_version      '>= 15.3'
 
 supports 'amazon'
 supports 'centos'
