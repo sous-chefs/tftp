@@ -5,6 +5,13 @@ This file is used to list changes made in each version of the tftp cookbook.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.15](https://github.com/sous-chefs/tftp/compare/4.0.14...v4.0.15) (2025-10-16)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#44](https://github.com/sous-chefs/tftp/issues/44)) ([7d052f7](https://github.com/sous-chefs/tftp/commit/7d052f730ee7896bbc23de021bcfa3195654880e))
+
 ## 4.0.5 - *2023-04-26*
 
 * Standardise files with files in sous-chefs/repo-management
