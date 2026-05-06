@@ -42,9 +42,10 @@ property :service_name, String,
              raise Chef::Exceptions::UnsupportedAction, "tftp_server is not supported on #{node['platform_family']}"
            end
          },
-                               description: 'Systemd service or socket unit to manage.'
-property :config_file, [String, nil], default: lazy { platform_family?('debian') ? '/etc/default/tftpd-hpa' : nil },
-                                     description: 'Debian-family tftpd-hpa environment file.'
+         description: 'Systemd service or socket unit to manage.'
+property :config_file, [String, nil],
+         default: lazy { platform_family?('debian') ? '/etc/default/tftpd-hpa' : nil },
+         description: 'Debian-family tftpd-hpa environment file.'
 property :config, Hash,
          default: lazy {
            {
@@ -56,7 +57,7 @@ property :config, Hash,
              OPTIONS: '-s',
            }
          },
-                       description: 'Debian-family tftpd-hpa environment values.'
+         description: 'Debian-family tftpd-hpa environment values.'
 
 default_action :create
 

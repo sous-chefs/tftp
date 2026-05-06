@@ -26,17 +26,15 @@ end
 
 ## Attribute Mapping
 
-| Legacy attribute | Resource property |
-|------------------|-------------------|
-| `node['tftp']['pkgs']` | `packages` |
-| `node['tftp']['directory']` | `directory` |
-| `node['tftp']['permissions']` | `directory_mode` |
-| `node['tftp']['owner']` | `directory_owner` |
-| `node['tftp']['group']` | `directory_group` |
-| `node['tftp']['username']` | `username` |
-| `node['tftp']['service_name']` | `service_name` |
-| `node['tftp']['config_file']` | `config_file` |
-| `node['tftp']['conf']` | `config` |
+* `node['tftp']['pkgs']` maps to `packages`.
+* `node['tftp']['directory']` maps to `directory`.
+* `node['tftp']['permissions']` maps to `directory_mode`.
+* `node['tftp']['owner']` maps to `directory_owner`.
+* `node['tftp']['group']` maps to `directory_group`.
+* `node['tftp']['username']` maps to `username`.
+* `node['tftp']['service_name']` maps to `service_name`.
+* `node['tftp']['config_file']` maps to `config_file`.
+* `node['tftp']['conf']` maps to `config`.
 
 ## Test Cookbook Example
 
