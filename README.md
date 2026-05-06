@@ -17,25 +17,32 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 ### Platforms
 
 - Debian/Ubuntu
-- RHEL/CentOS/Scientific/Amazon/Oracle
+- AlmaLinux/Rocky Linux/Oracle Linux/RHEL/CentOS Stream/Fedora/Amazon Linux
 
 ### Chef
 
-- Chef 12.1+
+- Chef 15.3+
 
-## Recipes
+## Resources
 
-### default
+### tftp_server
 
-The default recipe passes through to the server recipe.
+Installs and configures a TFTP server.
 
-### server
+See [documentation/tftp_server.md](documentation/tftp_server.md) for the full resource API.
 
-The node will install and use the `tftpd` application to provide files via tftp. Typically those nodes will be requesting images via PXE and configured from their BIOS as clients, so there is not a client recipe yet.
+## Migration
+
+This cookbook now provides custom resources instead of recipes and attributes. See [migration.md](migration.md) for the breaking changes and attribute-to-property mapping.
 
 ## Usage
 
-Nodes using the `tftp::server` recipe will provide tftp access to whatever files are in their `['tftp']['directory']`.
+```ruby
+tftp_server 'default' do
+  directory '/var/lib/tftpboot'
+  directory_mode '0755'
+end
+```
 
 ## Contributors
 

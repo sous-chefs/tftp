@@ -1,27 +1,56 @@
+---
 driver:
   name: vagrant
 
+transport:
+  max_wait_until_ready: 600
+  connection_retries: 10
+  connection_retry_sleep: 10
+
 provisioner:
-  name: chef_zero
+  name: chef_infra
   product_name: chef
+  product_version: latest
+  channel: stable
+  chef_license: accept
   enforce_idempotency: true
   multiple_converge: 2
   deprecations_as_errors: true
 
 verifier:
   name: inspec
+  sudo: true
 
 platforms:
-  - name: amazonlinux-2
-  - name: centos-7
-  - name: centos-8
-  - name: debian-9
-  - name: debian-10
+  - name: almalinux-9
+  - name: amazonlinux-2023
+  - name: centos-stream-9
+  - name: debian-12
   - name: fedora-latest
-  - name: ubuntu-16.04
-  - name: ubuntu-18.04
-  - name: ubuntu-20.04
+  - name: oraclelinux-9
+  - name: rockylinux-9
+  - name: ubuntu-24.04
+
+x-run_lists:
+  default: &default_run_list
+    - recipe[test::default]
+
+x-attributes:
+  default: &default_attributes
+    tftp_test:
+      directory: /var/lib/tftpboot
+      directory_mode: "0755"
+      username: tftp
+      address: 0.0.0.0:69
+      options: --secure
+
+x-verifiers:
+  default: &default_verifier
+    inspec_tests:
+      - path: test/integration/default
 
 suites:
   - name: default
-    run_list: tftp::default
+    run_list: *default_run_list
+    attributes: *default_attributes
+    verifier: *default_verifier
