@@ -41,6 +41,9 @@ jobs:
       - name: Install Cinc Workstation
         uses: sous-chefs/.github/.github/actions/install-workstation@8.0.2
 
+      - name: Install cookbooks
+        run: chef install Policyfile.rb
+
       - name: Run Kitchen
         env:
           CHEF_LICENSE: accept-no-persist
