@@ -9,6 +9,7 @@ transport:
 
 provisioner:
   name: chef_infra
+  policyfile: Policyfile.rb
   product_name: chef
   product_version: latest
   channel: stable
@@ -31,10 +32,6 @@ platforms:
   - name: rockylinux-9
   - name: ubuntu-24.04
 
-x-run_lists:
-  default: &default_run_list
-    - recipe[test::default]
-
 x-attributes:
   default: &default_attributes
     tftp_test:
@@ -51,6 +48,5 @@ x-verifiers:
 
 suites:
   - name: default
-    run_list: *default_run_list
     attributes: *default_attributes
     verifier: *default_verifier
